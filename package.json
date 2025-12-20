@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "npm install --legacy-peer-deps"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,7 @@
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
     "canvas": "^3.2.0",
-    "cloudinary": "^2.8.0",
+    "cloudinary": "^1.41.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
