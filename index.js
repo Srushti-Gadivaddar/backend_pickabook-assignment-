@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> c5e28e9dbc505f1ea0f1f21ac3f8c74f00eb005e
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
@@ -25,33 +21,23 @@ faceapi.env.monkeyPatch({ Canvas, Image, ImageData });
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 
-<<<<<<< HEAD
 
-=======
 //  LOAD MODELS 
->>>>>>> c5e28e9dbc505f1ea0f1f21ac3f8c74f00eb005e
 const MODEL_URL = path.join(__dirname, "models");
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromDisk(MODEL_URL),
   faceapi.nets.faceLandmark68Net.loadFromDisk(MODEL_URL),
   faceapi.nets.ageGenderNet.loadFromDisk(MODEL_URL),
 ]).then(() => console.log("Face models loaded"));
-<<<<<<< HEAD
 
-
-=======
 
 //  UPLOAD 
->>>>>>> c5e28e9dbc505f1ea0f1f21ac3f8c74f00eb005e
 app.post("/upload", upload.single("image"), (req, res) => {
   res.json({ imageUrl: req.file.path });
 });
 
-<<<<<<< HEAD
 
-=======
 //  HELPERS 
->>>>>>> c5e28e9dbc505f1ea0f1f21ac3f8c74f00eb005e
 function clamp(val, min, max) {
   return Math.max(min, Math.min(max, val));
 }
@@ -75,11 +61,9 @@ function detectSmile(lm) {
   return mouthOpen / mouthWidth > 0.2 ? "smiling" : "neutral";
 }
 
-<<<<<<< HEAD
 
-=======
 //  SAFE COLOR DETECTION 
->>>>>>> c5e28e9dbc505f1ea0f1f21ac3f8c74f00eb005e
+
 async function detectAverageColor(imageUrl, region, imgWidth, imgHeight) {
   try {
     const res = await axios.get(imageUrl, {
@@ -102,16 +86,13 @@ async function detectAverageColor(imageUrl, region, imgWidth, imgHeight) {
     const color = await getAverageColor(c.toBuffer("image/png"));
     return color.hex || "#d1bfa7";
   } catch (e) {
-    console.warn("⚠ Color detect fallback");
+    console.warn("Color detect fallback");
     return "#d1bfa7";
   }
 }
 
-<<<<<<< HEAD
-
-=======
 //  CARTOON GENERATION 
->>>>>>> c5e28e9dbc505f1ea0f1f21ac3f8c74f00eb005e
+
 async function generateChildCartoon(
   imageUrl,
   faceData,
@@ -149,11 +130,9 @@ async function generateChildCartoon(
   return `data:image/png;base64,${Buffer.from(r.data).toString("base64")}`;
 }
 
-<<<<<<< HEAD
 
-=======
 //  GENERATE 
->>>>>>> c5e28e9dbc505f1ea0f1f21ac3f8c74f00eb005e
+
 app.post("/generate", async (req, res) => {
   try {
     const { imageUrl } = req.body;
@@ -229,11 +208,7 @@ app.post("/generate", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 
-=======
-//  START 
->>>>>>> c5e28e9dbc505f1ea0f1f21ac3f8c74f00eb005e
 app.listen(8080, () => {
   console.log("Server running on port 8080");
 });
